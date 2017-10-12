@@ -1,2 +1,13 @@
 <h1>Nuclear Code</h1>
-<%= @launch_code %>
+
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<br>
+
+<% if current_user.has_role? :President %>
+  <%= @potus_code %>
+<% elsif current_user.has_role? :Russia %>
+  <%= @russian_code %>
+<% elsif current_user.has_role? :DefSec %>
+  <%= @defsec_code %>
+
+<% end %>
